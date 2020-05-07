@@ -22,14 +22,17 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect("mongodb+srv://hritikbagane:hritik1999@yelpcamp-3qtsa.mongodb.net/test?retryWrites=true&w=majority", { 
-	useNewUrlParser: true,
-	useCreateIndex: true
-}).then(() => {
-	console.log("Connected to DB");
-}).catch(err => {
-	console.log("ERROR:", err.message);
-});
+//console.log(process.env.DATABASEURL);
+
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+// mongoose.connect("mongodb+srv://hritikbagane:hritik1999@yelpcamp-3qtsa.mongodb.net/test?retryWrites=true&w=majority", { 
+// 	useNewUrlParser: true,
+// 	useCreateIndex: true
+// }).then(() => {
+// 	console.log("Connected to DB");
+// }).catch(err => {
+// 	console.log("ERROR:", err.message);
+// });
 
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
