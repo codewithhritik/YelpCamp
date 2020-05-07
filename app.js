@@ -22,7 +22,15 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://hritikbagane:hritik1999@yelpcamp-3qtsa.mongodb.net/test?retryWrites=true&w=majority", { 
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log("Connected to DB");
+}).catch(err => {
+	console.log("ERROR:", err.message);
+});
+
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
